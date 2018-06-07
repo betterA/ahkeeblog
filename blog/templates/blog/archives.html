@@ -1,0 +1,16 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+        {% for post in post_list %}
+
+       
+             <div class="entry-meta">
+                    
+    
+                    <span class="post-date"><font color = 'gray'>{{ post.date_time|date:"Y /m /d" }}</font></span>
+                    <span class="post-category"> <a href="{% url 'blog:post' post.id %}"> &nbsp; &nbsp; &nbsp; &nbsp;{{ post.title }} &nbsp; &nbsp; &nbsp; &nbsp;</a></span>
+    
+                </div>
+    {% endfor %}
+
+{% endblock content %}

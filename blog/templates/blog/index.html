@@ -1,0 +1,27 @@
+{% extends "blog/base.html" %}
+{% load custom_markdown %}
+{% block content %}
+
+{% for post in post_list %}
+<article class="post">
+        <header class="entry-header">
+            <h1 class="entry-title">
+                <a href="{% url 'blog:post' post.id %}">{{ post.title }}</a>
+            </h1>
+            <div class="entry-meta">
+                <span class="post-category">{{ post.category }}</span>
+
+                <span class="post-date">{{ post.date_time }}</span>
+
+            </div>
+        </header>
+        <div class="entry-content clearfix">
+            <p> &nbsp; &nbsp; &nbsp; &nbsp;{{post.short|custom_markdown}}</p>
+            <div class="read-more cl-effect-14">
+                <a href="{% url 'blog:post' post.id %}" class="more-link">继续阅读 <span class="meta-nav">→</span></a>
+            </div>
+        </div>
+</article>
+{% endfor %}
+
+{% endblock content %}
